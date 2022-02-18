@@ -1,0 +1,20 @@
+[
+{"id":1678228,"name":"Keelung","state":"","country":"TW","coord":{"lon":121.741898,"lat":25.12825}}, //仁愛區
+{"id":1668341,"name":"Taipei","state":"","country":"TW","coord":{"lon":121.531853,"lat":25.04776}}, //中山區
+{"id":1673169,"name":"Guting","state":"","country":"TW","coord":{"lon":121.51667,"lat":25.033331}},  //中正區
+{"id":1670029,"name":"Banqiao","state":"","country":"TW","coord":{"lon":121.467194,"lat":25.014271}}, //板橋區
+{"id":1665148,"name":"Taipei","state":"","country":"TW","coord":{"lon":121.581749,"lat":24.94702}}, //新店區
+{"id":1667905,"name":"Taoyuan","state":"","country":"TW","coord":{"lon":121.318703,"lat":24.989599}}, //桃園區
+{"id":1675151,"name":"Hsinchu","state":"","country":"TW","coord":{"lon":120.968613,"lat":24.80361}}, //新竹市
+{"id":1675107,"name":"Hsinchu County","state":"","country":"TW","coord":{"lon":121.16111,"lat":24.67416}}, //尖石鄉{"id":1671971,"name":"Miaoli","state":"","country":"TW","coord":{"lon":120.823669,"lat":24.56427}}, //苗栗市
+{"id":1668399,"name":"Taichung","state":"","country":"TW","coord":{"lon":120.683899,"lat":24.1469}},  //北區
+{"id":1679136,"name":"Chang-hua","state":"","country":"TW","coord":{"lon":120.562759,"lat":24.073271}}, //彰化市
+{"id":1665196,"name":"Douliu","state":"","country":"TW","coord":{"lon":120.543327,"lat":23.70944}}, //斗六市
+{"id":1678836,"name":"Jiayi Shi","state":"","country":"TW","coord":{"lon":120.448891,"lat":23.47917}},  //西區
+{"id":1668352,"name":"Tainan","state":"","country":"TW","coord":{"lon":120.188759,"lat":23.000019}}, //中西區
+{"id":1673820,"name":"Kaohsiung","state":"","country":"TW","coord":{"lon":120.313332,"lat":22.616261}}, //前鎮區
+{"id":1677314,"name":"Chonglan","state":"","country":"TW","coord":{"lon":120.485023,"lat":22.692551}}, //屏東市
+{"id":1674199,"name":"Yilan","state":"","country":"TW","coord":{"lon":121.752998,"lat":24.757}} //宜蘭市
+{"id":1674504,"name":"Hualien City","state":"","country":"TW","coord":{"lon":121.604439,"lat":23.97694}}, //花蓮市
+{"id":1668295,"name":"Taitung","state":"","country":"TW","coord":{"lon":121.144569,"lat":22.759911}}, //台東市
+]
