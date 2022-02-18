@@ -121,6 +121,7 @@ class _WeatherDetailState extends State<WeatherDetail> {
     return Builder(
       builder: (context) {
         return ListView(
+          shrinkWrap: true,
           padding: const EdgeInsets.all(10.0),
           children: _getItems(),
         );
