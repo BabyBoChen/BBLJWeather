@@ -30,14 +30,14 @@ var cities = {
     'district' : '桃園區'
   },
   'Hsinchu':{
-    'cityName' : '新竹縣(新竹市)',
-    'coord': 'lat=24.8036&lon=120.9686',
-    'district' : '新竹市'
+    'cityName' : '新竹縣',
+    'coord': 'lat=24.8383&lon=121.0077',
+    'district' : '竹北市'
   },
-  'HsinchuCounty':{
-    'cityName' : '新竹縣(尖石鄉)',
-    'coord': 'lat=24.6741&lon=121.1611',
-    'district' : '尖石鄉'
+  'HsinchuCity':{
+    'cityName' : '新竹市',
+    'coord': 'lat=24.8036&lon=120.9686',
+    'district' : '東區'
   },
   'Miaoli':{
     'cityName' : '苗栗縣',
@@ -82,7 +82,7 @@ var cities = {
   'Pingtung':{
     'cityName' : '屏東縣',
     'coord' : 'lat=22.6925&lon=120.4850',
-    'district' : '前鎮區'
+    'district' : '屏東市'
   },
   'Yilan':{
     'cityName' : '宜蘭縣',

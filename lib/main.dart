@@ -37,7 +37,7 @@ class App extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(255, 236, 222, 217),
         primarySwatch: Colors.orange,
       ),
-      home: Index(),
+      home: const Index(),
       routes: routes, //routes.dart
     );
   }

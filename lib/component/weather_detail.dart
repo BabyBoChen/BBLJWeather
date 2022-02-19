@@ -2,27 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web/component/daily.dart';
 import 'package:flutter_web/component/hourly.dart';
-import 'package:flutter_web/data/data.dart';
 
-class WeatherDetail extends StatefulWidget {
+class WeatherDetail extends StatelessWidget {
 
   final Map<String, dynamic> weatherData;
   final Map<String, dynamic> city;
 
   const WeatherDetail({Key? key,required this.city, required this.weatherData}) : super(key: key);
 
-  @override
-  _WeatherDetailState createState() => _WeatherDetailState();
-}
-
-class _WeatherDetailState extends State<WeatherDetail> {
-
-  @override
-  initState() {
-    super.initState();
-  }
-
-  List<Widget> _getDailies(List<dynamic> days){
+  List<Widget> _getDailies(List<dynamic> days) {
     List<Widget> dailies = [];
     days.forEach((day) {
       Widget daily = Daily(day: day);
@@ -32,11 +20,10 @@ class _WeatherDetailState extends State<WeatherDetail> {
   }
 
   List<Widget> _getItems(){
-    Map<String, dynamic> weatherData = widget.weatherData;
     String weatherDesc = weatherData['current']['weather'][0]['description'];
     String temp = weatherData['current']['temp'].toString();
     String iconUrl = 'https://openweathermap.org/img/wn/${weatherData["current"]['weather'][0]['icon']}@4x.png';
-    print(iconUrl);
+    //print(iconUrl);
     List<Widget> items = [];
     items.addAll([
       Row(
@@ -55,7 +42,7 @@ class _WeatherDetailState extends State<WeatherDetail> {
             child: Text('觀測站：', textScaleFactor: 1.5,),
           ),
           Container(
-            child: Text(widget.city["district"], textScaleFactor: 1.5,),
+            child: Text(city["district"], textScaleFactor: 1.5,),
           ),
         ],
       ),

@@ -6,36 +6,18 @@ import 'package:flutter_web/data/data.dart';
 import 'package:flutter_web/data/secret.dart';
 import 'dart:convert';
 import 'package:flutter_web/main.dart';
-import 'package:flutter_web/component/hourly.dart';
 
-class Index extends StatefulWidget{
+class Index extends StatelessWidget {
 
-  String title = 'BBLJ氣象台';
+  const Index({Key? key}) : super(key: key);
 
-  Index({Key? key}) : super(key:key);
-
-  @override
-  State<Index> createState() {
-    return _Index();
-  }
-
-}
-
-class _Index extends State<Index>{
-
-  Map<String, dynamic> weatherData = {};
-
-  Future getWeather(String coord) async{
+  Future<Map<String, dynamic>> getWeather(String coord) async{
     Uri url = Uri.parse('https://api.openweathermap.org/data/2.5/onecall?'
         '${coord}&appid=${appId}&units=metric&lang=zh_tw');
-    print(url);
+    //print(url);
     Response response = await get(url);
-    weatherData = jsonDecode(response.body);
-  }
-
-  @override
-  initState() {
-    super.initState();
+    var weatherData = jsonDecode(response.body);
+    return weatherData;
   }
 
   @override
@@ -69,17 +51,18 @@ class _Index extends State<Index>{
       drawer: const BBLJDrawer(),
       body: FutureBuilder(
         future: getWeather(args['coord']!),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
-            return Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("images/loading.gif"),
-                ),
+        builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done && snapshot.hasData){
+            return WeatherDetail(city:args, weatherData: snapshot.data!);
+          }else {
+            return Center(
+              //child: Image.asset("images/loading.gif"),
+              child: SizedBox(
+                height: 100,
+                width: 100,
+                child: Image.asset("images/loading.gif", fit: BoxFit.contain,),
               ),
             );
-          } else {
-            return WeatherDetail(city:args, weatherData: weatherData);
           }
         }
       )

@@ -19,7 +19,7 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
       decoration: BoxDecoration(
         color: Colors.orange,
         image: const DecorationImage(
-          image: AssetImage("images/catybo.png"),
+          image: AssetImage("images/CatyBo.png"),
           fit: BoxFit.contain,
         ),
       ),
