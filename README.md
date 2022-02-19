@@ -1,16 +1,7 @@
-# flutter_web
+# BBLJ氣象台
 
-A new Flutter project.
+BBLJ氣象台是一款以Flutter框架開發的Web應用程式，從OpenWeather網站抓取即時天氣資訊，並採用Material Design的設計標準將天氣資訊呈現在頁面中。
 
-## Getting Started
+頁面載入前的海報圖片是由BBLJ的前端工程師Jessy親自操刀繪製。
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+本站利用Azure的Static Web App服務上架至雲端伺服器，並設定GitHub存放庫進行持續部署。
