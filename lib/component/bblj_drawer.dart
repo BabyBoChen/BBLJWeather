@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web/data/data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +16,6 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
     List<Widget> drawerItems = [];
     var drawerHeader = const DrawerHeader(
       decoration: BoxDecoration(
-        color: Colors.orange,
         image: const DecorationImage(
           image: AssetImage("images/CatyBo.png"),
           fit: BoxFit.contain,
@@ -27,6 +25,7 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
         alignment: AlignmentDirectional.bottomCenter,
         child: Text('BBLJ氣象台',
           textScaleFactor: 1.5,
+          style: TextStyle(color: Colors.white),
         ),
       ),
     );
@@ -35,7 +34,10 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
     for(var i = 0; i < cityNames.length; i++){
       var cityName = cityNames[i];
       var tile = ListTile(
-        title: Text(cities[cityName]!['cityName']!, textScaleFactor: 1.5,),
+        title: Text(cities[cityName]!['cityName']!,
+          textScaleFactor: 1.5,
+          style: TextStyle(color: Colors.white),
+        ),
         onTap:  () async {
           await prefs!.setString('City', cityName);
           Navigator.of(context).pushNamed('/${cityName}', arguments: cities[cityName],);
@@ -50,9 +52,9 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
   Widget build(BuildContext context) {
 
     return Drawer(
-      backgroundColor: Colors.orange,
+      backgroundColor: const Color(0xff769fcd),
       child: ListView(
-        padding: EdgeInsets.zero,
+        controller: ScrollController(),
         children: _drawerBuilder(),
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_web/data/data.dart';
 
 class Daily extends StatelessWidget {
 
@@ -73,7 +74,7 @@ class Daily extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.deepOrange),
+          border: Border.all(color: primaryColor),
       ),
       height: 55,
       child: Padding(

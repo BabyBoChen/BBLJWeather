@@ -1,4 +1,0 @@
-flutter_icons:
-  image_path: "assets/catybo.png"
-  image_path_android: "assets/catybo.png"
-  android: true # can specify file name here e.g. "ic_launcher"

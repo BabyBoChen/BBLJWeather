@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web/view/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_web/routes.dart';
+import 'package:flutter_web/data/data.dart';
 
 SharedPreferences? prefs;
 
@@ -34,8 +35,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BBLJ氣象台',
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 236, 222, 217),
-        primarySwatch: Colors.orange,
+        primarySwatch: themeColor,
+        scaffoldBackgroundColor: backgroundColor,
       ),
       home: const Index(),
       routes: routes, //routes.dart

@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
 var cities = {
   'Keelung':{
     'cityName' : '基隆市',
@@ -100,3 +104,21 @@ var cities = {
     'district' : '台東市'
   },
 };
+
+Map<int, Color> themeColorMap = {
+  50:Color.fromRGBO(118, 159, 205, .1),
+  100:Color.fromRGBO(118, 159, 205, .2),
+  200:Color.fromRGBO(118, 159, 205, .3),
+  300:Color.fromRGBO(118, 159, 205, .4),
+  400:Color.fromRGBO(118, 159, 205, .5),
+  500:Color.fromRGBO(118, 159, 205, .6),
+  600:Color.fromRGBO(118, 159, 205, .7),
+  700:Color.fromRGBO(118, 159, 205, .8),
+  800:Color.fromRGBO(118, 159, 205, .9),
+  900:Color.fromRGBO(118, 159, 205, 1),
+};
+
+MaterialColor themeColor = MaterialColor(0xFF769FCD, themeColorMap);
+
+Color primaryColor = const Color(0xff769fcd);
+Color backgroundColor = const Color(0xffd6e6f2);
