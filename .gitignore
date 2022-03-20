@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-secrect.dart
+secret.dart
 
 # IntelliJ related
 *.iml
