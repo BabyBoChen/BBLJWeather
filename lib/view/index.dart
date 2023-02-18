@@ -1,38 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:flutter_web/component/bblj_drawer.dart';
-import 'package:flutter_web/component/weather_detail.dart';
-import 'package:flutter_web/data/data.dart';
-import 'package:flutter_web/data/secret.dart';
-import 'dart:convert';
-import 'package:flutter_web/main.dart';
+import 'package:flutter_web/data/city_coord.dart';
+import 'package:flutter_web/interface/i_cookie_service.dart';
+import 'package:flutter_web/interface/i_weather_api.dart';
+import 'package:flutter_web/service_injection.dart';
+import 'package:flutter_web/view/bblj_drawer.dart';
+import 'package:flutter_web/view/weather_detail.dart';
+
 
 class Index extends StatelessWidget {
 
   const Index({Key? key}) : super(key: key);
 
-  Future<Map<String, dynamic>> getWeather(String coord) async{
-    Uri url = Uri.parse('https://api.openweathermap.org/data/2.5/onecall?'
-        '${coord}&appid=${appId}&units=metric&lang=zh_tw');
-    //print(url);
-    Response response = await get(url);
-    var weatherData = jsonDecode(response.body);
-    return weatherData;
-  }
-
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> args = {};
+
+    //從route中解析CityCoord (類似解析query string)
+    //如果route中沒有CityCoord, 嘗試從cookie中讀取上一次查詢的CityCoord
+    CityCoord theCity = new CityCoord();
     if(ModalRoute.of(context)!.settings.arguments == null){
-      if(prefs!.getString('City')== null){
-        args = cities['Taipei']!;
-      }else{
-        args = cities[prefs!.getString('City')]!;
-      }
+      theCity = (GetTransient(ICookieService) as ICookieService).loadLastVisitedCity();
     }else{
-      args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      theCity = ModalRoute.of(context)!.settings.arguments as CityCoord;
     }
-    //print(args);
+    //print(theCity);
+
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -46,14 +37,14 @@ class Index extends StatelessWidget {
             );
           },
         ),
-        title: Text(args['cityName']!),
+        title: Text(theCity.cityName),
       ),
       drawer: const BBLJDrawer(),
       body: FutureBuilder(
-        future: getWeather(args['coord']!),
+        future: (GetTransient(IWeatherApi) as IWeatherApi).getWeather(theCity.coord),
         builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData){
-            return WeatherDetail(city:args, weatherData: snapshot.data!);
+            return WeatherDetail(city:theCity, weatherData: snapshot.data!);
           }else {
             return Center(
               //child: Image.asset("images/loading.gif"),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/data/city_coord.dart';
 import 'package:flutter_web/data/data.dart';
+import 'package:flutter_web/interface/i_cookie_service.dart';
+import 'package:flutter_web/service_injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_web/main.dart';
 
@@ -30,17 +33,19 @@ class _BBLJDrawerState extends State<BBLJDrawer> {
       ),
     );
     drawerItems.add(drawerHeader);
-    var cityNames = cities.keys.toList();
-    for(var i = 0; i < cityNames.length; i++){
-      var cityName = cityNames[i];
+    var cityNameEs = cities.keys.toList();
+    for(var i = 0; i < cityNameEs.length; i++){
+      var cityNameE = cityNameEs[i];
+      CityCoord city = CityCoord.fromJson(cityNameEs[i], cities[cityNameE]!);
       var tile = ListTile(
-        title: Text(cities[cityName]!['cityName']!,
+        title: Text(city.cityName,
           textScaleFactor: 1.5,
           style: TextStyle(color: Colors.white),
         ),
         onTap:  () async {
-          await prefs!.setString('City', cityName);
-          Navigator.of(context).pushNamed('/${cityName}', arguments: cities[cityName],);
+          var cookieService = GetTransient(ICookieService) as ICookieService;
+          await cookieService.saveLastVisitedCity(city);
+          Navigator.of(context).pushNamed('/${cityNameE}', arguments: city,);
         },
       );
       drawerItems.add(tile);

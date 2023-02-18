@@ -58,6 +58,11 @@ var cities = {
     'coord': 'lat=24.0732&lon=120.5627',
     'district' : '彰化市'
   },
+  'Nantou':{
+    'cityName' : '南投縣',
+    'coord': 'lat=23.9157&lon=120.6639',
+    'district' : '南投市'
+  },
   'Yunlin':{
     'cityName' : '雲林縣',
     'coord': 'lat=23.7094&lon=120.5433',

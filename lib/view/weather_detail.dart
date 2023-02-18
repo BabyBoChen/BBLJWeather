@@ -1,31 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web/component/daily.dart';
-import 'package:flutter_web/component/hourly.dart';
+import 'package:flutter_web/view/daily.dart';
+import 'package:flutter_web/view/hourly.dart';
+import 'package:flutter_web/data/city_coord.dart';
 
 class WeatherDetail extends StatelessWidget {
 
   final Map<String, dynamic> weatherData;
-  final Map<String, dynamic> city;
+  final CityCoord city;
 
-  const WeatherDetail({Key? key,required this.city, required this.weatherData}) : super(key: key);
+  const WeatherDetail({Key? key, required this.city, required this.weatherData}) : super(key: key);
 
-  List<Widget> _getDailies(List<dynamic> days) {
-    List<Widget> dailies = [];
-    days.forEach((day) {
-      Widget daily = Daily(day: day);
-      dailies.add(daily);
-    });
-    return dailies;
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (context) {
+        return ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(20.0),
+          children: _buildItems(),
+        );
+      },
+    );
   }
 
-  List<Widget> _getItems(){
+  List<Widget> _buildItems(){
     String weatherDesc = weatherData['current']['weather'][0]['description'];
     String temp = weatherData['current']['temp'].toString();
     String iconUrl = 'https://openweathermap.org/img/wn/${weatherData["current"]['weather'][0]['icon']}@4x.png';
     //print(iconUrl);
     List<Widget> items = [];
     items.addAll([
+      //現在的天氣概況示意圖-------------------------------------
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -34,6 +40,7 @@ class WeatherDetail extends StatelessWidget {
           ),
         ],
       ),
+      //現在的天氣概況------------------------------------------
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -42,7 +49,7 @@ class WeatherDetail extends StatelessWidget {
             child: Text('觀測站：', textScaleFactor: 1.5,),
           ),
           Container(
-            child: Text(city["district"], textScaleFactor: 1.5,),
+            child: Text(city.district, textScaleFactor: 1.5,),
           ),
         ],
       ),
@@ -73,6 +80,7 @@ class WeatherDetail extends StatelessWidget {
       Container(
         height: 10,
       ),
+      // 今日天氣預報--------------------------------------------
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -86,6 +94,7 @@ class WeatherDetail extends StatelessWidget {
       Container(
         height: 10,
       ),
+      // 一周天氣預報--------------------------------------------
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -100,19 +109,17 @@ class WeatherDetail extends StatelessWidget {
       ),
     ]);
     items.addAll(_getDailies(weatherData['daily']));
+    // ----------------------------------------------------
     return items;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return ListView(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(10.0),
-          children: _getItems(),
-        );
-      },
-    );
+  List<Widget> _getDailies(List<dynamic> days) {
+    List<Widget> dailies = [];
+    days.forEach((day) {
+      Widget daily = Daily(day: day);
+      dailies.add(daily);
+    });
+    return dailies;
   }
+
 }

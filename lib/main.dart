@@ -1,17 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web/interface/i_cookie_service.dart';
 import 'package:flutter_web/view/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_web/routes.dart';
 import 'package:flutter_web/data/data.dart';
 
-SharedPreferences? prefs;
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  registerRouters();
-  prefs = await SharedPreferences.getInstance();
+  registerRoutes();
+  ICookieService.initCookies();
   runApp(const App());
 }
 

@@ -4,9 +4,8 @@ import 'data/data.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {};
 
-void registerRouters(){
+void registerRoutes(){
   cities.forEach((key, value) {
-    routes['/${key}'] = (context) => Index();
+    routes['/${key}'] = (context) => const Index();
   });
-
 }
