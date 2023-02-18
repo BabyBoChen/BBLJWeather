@@ -1,11 +1,11 @@
 {
     "name": "BBLJ氣象台",
-    "short_name": "BBLJWeather",
+    "short_name": "BBLJ氣象台",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A Weather Report App Powered By OpenWeatherMap",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
