@@ -1,48 +1,16 @@
-import 'dart:ui';
+import 'package:BBLJWeather/views/bblj_scrollbehavior.dart';
+import 'package:BBLJWeather/views/home.dart';
+import 'package:flutter/cupertino.dart';
+import 'interfaces/i_cookie_service.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_web/interface/i_cookie_service.dart';
-import 'package:flutter_web/view/index.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_web/routes.dart';
-import 'package:flutter_web/data/data.dart';
 
-void main() async{
+void main() async {
+  await ICookieService.initCookies();
   WidgetsFlutterBinding.ensureInitialized();
-  registerRoutes();
-  ICookieService.initCookies();
-  runApp(const App());
+  runApp(CupertinoApp(
+    scrollBehavior: BBLJScrollBehavior(),
+    title:"BBLJ氣象台",
+    home: const Home(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
-
-class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-  };
-}
-
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      scrollBehavior: MyCustomScrollBehavior(),
-      debugShowCheckedModeBanner: false,
-      title: 'BBLJ氣象台',
-      theme: ThemeData(
-        primarySwatch: themeColor,
-        scaffoldBackgroundColor: backgroundColor,
-      ),
-      home: const Index(),
-      routes: routes, //routes.dart
-    );
-  }
-}
-
-
-
-

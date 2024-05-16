@@ -1,6 +1,6 @@
 # BBLJ氣象台
 
-BBLJ氣象台是一款以Flutter框架開發的Web應用程式，從OpenWeather網站抓取即時天氣資訊，並採用Material Design的設計標準將天氣資訊呈現在頁面中。
+BBLJ氣象台是一款以Flutter框架開發的Web應用程式，從api.open-meteo.com網站抓取台灣本島各縣市的即時天氣資訊，並採用Cupertino主題樣式將天氣資訊呈現在頁面中。
 
 頁面載入前的海報圖片是由BBLJ的前端工程師Jessy親自操刀繪製。
 
